@@ -16,6 +16,22 @@ esac
 make clean
 
 ./configure \
+--disable-everything \
+--disable-demuxers \
+--enable-demuxer=image2 \
+--disable-muxers \
+--enable-muxer=mp4 \
+--disable-encoders \
+--enable-encoder=libx264 \
+--disable-parsers \
+--enable-parser=h264 \
+--enable-parser=png \
+--disable-decoders \
+--enable-decoder=png \
+--disable-filters \
+--enable-filter=fps \
+--enable-filter=scale \
+--enable-protocol=file \
 --target-os="$TARGET_OS" \
 --cross-prefix="$CROSS_PREFIX" \
 --arch="$NDK_ABI" \
@@ -24,11 +40,6 @@ make clean
 --sysroot="$NDK_SYSROOT" \
 --enable-gpl \
 --enable-version3 \
---disable-everything \
---enable-encoder=h264 \
---enable-encoder=h264 \
---enable-decoder=png \
---enable-encoder=png \
 --enable-pic \
 --enable-libx264 \
 --enable-pthreads \
@@ -41,9 +52,6 @@ make clean
 --enable-yasm \
 --disable-doc \
 --disable-shared \
---disable-ffplay \
---disable-ffprobe \
---disable-ffserver \
 --enable-static \
 --pkg-config="${2}/ffmpeg-pkg-config" \
 --prefix="${2}/build/${1}" \
